@@ -1,14 +1,14 @@
 from django.urls import path
-from .views import BlogPostCreateView,BlogPostDeleteView,BlogPostUpdateView,CategoryCreateAPIView,BlogPostListAPIView,CategoryListAPIView,BlogPostByCategoryListView,BlogPostByUserListView,BlogPostDetailView
+from .views import CategoryCreate__ListEndPoint,BlogPostList_CreateEndpoint,BlogPostByUserListView,BlogPostDetailEndPoint,BlogPostByCategoryListView
 
 urlpatterns=[
-    path('posts/users/create/',BlogPostCreateView.as_view(), name='blogpost-create'),
-    path('posts/users/update/<int:pk>/', BlogPostUpdateView.as_view(), name='blogpost-update'),
-    path('posts/users/delete/<int:pk>/', BlogPostDeleteView.as_view(), name='blogpost-delete'),
-    path('categories/users/create/', CategoryCreateAPIView.as_view(), name='category-create'),
-    path('categories/posts/<int:pk>/',BlogPostByCategoryListView.as_view(),name='posts-by-category'),
-    path('posts/detail/<int:pk>/', BlogPostDetailView.as_view(), name='post-detail'),
-    path('user/posts/<int:pk>/', BlogPostByUserListView.as_view(), name='posts-by-user'),
-    path('posts/', BlogPostListAPIView.as_view(), name='blogpost-list'),
-    path('categories/',CategoryListAPIView.as_view(), name='categories-list')
+    path('users/create-post/',BlogPostList_CreateEndpoint.as_view(), name='blogpost-create'),
+    path('users/update-post/<int:pk>/', BlogPostDetailEndPoint.as_view(), name='blogpost-update'),
+    path('users/delete-post/<int:pk>/', BlogPostDetailEndPoint.as_view(), name='blogpost-delete'),
+    path('categories/create/', CategoryCreate__ListEndPoint.as_view(), name='category-create'),
+    path('posts/category/<int:category_id>/',BlogPostByCategoryListView.as_view(),name='posts-by-category'),
+    path('users/retrieve-post/<int:pk>/', BlogPostDetailEndPoint.as_view(), name='post-detail'),
+    path('posts/user/<int:user_id>/', BlogPostByUserListView.as_view(), name='posts-by-user'),
+    path('users/list-post/', BlogPostList_CreateEndpoint.as_view(), name='blogpost-list'),
+    path('categories/list/',CategoryCreate__ListEndPoint.as_view(), name='categories-list')
 ]

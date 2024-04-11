@@ -13,9 +13,15 @@ class BlogServiceAdmin(admin.ModelAdmin):
     list_display_links=['id','title']
     list_filter= []
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display=['id', 'name']
+    list_display_links=['id','name']
+    list_filter= []
+
+
 
 admin.site.register(BlogPost,BlogServiceAdmin)
-admin.site.register(Category)
+admin.site.register(Category,CategoryAdmin)
 
 
 
